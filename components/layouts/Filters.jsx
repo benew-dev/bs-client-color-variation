@@ -9,7 +9,7 @@ import dynamic from "next/dynamic";
 
 const Search = dynamic(() => import("./Search"), {
   loading: () => (
-    <div className="h-10 w-full bg-gray-100 animate-pulse rounded-md"></div>
+    <div className="h-10 w-full bg-pink-50 animate-pulse rounded-md"></div> // ✅ Rose pastel
   ),
   ssr: true,
 });
@@ -18,31 +18,26 @@ const Filters = ({ categories, setLocalLoading }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // État local synchronisé avec les paramètres d'URL
   const [min, setMin] = useState(() => searchParams?.get("min") || "");
   const [max, setMax] = useState(() => searchParams?.get("max") || "");
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Mémoiser la valeur de catégorie actuelle
   const currentCategory = useMemo(
     () => searchParams?.get("category") || "",
     [searchParams],
   );
 
-  // ✅ NOUVEAU : Mémoriser le keyword pour le reset
   const currentKeyword = useMemo(
     () => searchParams?.get("keyword") || "",
     [searchParams],
   );
 
-  // Synchroniser les états avec les paramètres d'URL
   useEffect(() => {
     setMin(searchParams?.get("min") || "");
     setMax(searchParams?.get("max") || "");
   }, [searchParams]);
 
-  // Validation des prix mémorisée
   const validatePrices = useCallback(async () => {
     if (min === "" && max === "") {
       throw new Error(
@@ -51,7 +46,6 @@ const Filters = ({ categories, setLocalLoading }) => {
     }
 
     if (min !== "" && max !== "") {
-      // Conversion sécurisée en nombres
       const minNum = Number(min);
       const maxNum = Number(max);
 
@@ -65,7 +59,6 @@ const Filters = ({ categories, setLocalLoading }) => {
     }
   }, [min, max]);
 
-  // Gestionnaire de clic sur catégorie
   const handleCategoryClick = useCallback(
     (categoryId) => {
       if (isSubmitting) return;
@@ -96,7 +89,6 @@ const Filters = ({ categories, setLocalLoading }) => {
     [searchParams, router, setLocalLoading],
   );
 
-  // Gestionnaire pour appliquer les filtres de prix
   const handlePriceFilter = useCallback(async () => {
     if (isSubmitting) return;
     setIsSubmitting(true);
@@ -124,7 +116,6 @@ const Filters = ({ categories, setLocalLoading }) => {
     }
   }, [min, max, searchParams, validatePrices, router, setLocalLoading]);
 
-  // ✅ MODIFIÉ : Réinitialiser aussi le keyword
   const resetFilters = useCallback(() => {
     setIsSubmitting(false);
     setLocalLoading(false);
@@ -134,20 +125,16 @@ const Filters = ({ categories, setLocalLoading }) => {
     setOpen(false);
   }, [router, setLocalLoading]);
 
-  // ✅ MODIFIÉ : Inclure keyword dans les filtres actifs
   const hasActiveFilters = useMemo(() => {
     return min || max || currentCategory || currentKeyword;
   }, [min, max, currentCategory, currentKeyword]);
 
-  // ✅ NOUVEAU : Fonction pour gérer la fermeture après recherche (mobile uniquement)
   const handleSearchComplete = useCallback(() => {
-    // Fermer le panneau uniquement sur mobile
     if (window.innerWidth < 768) {
       setOpen(false);
     }
   }, []);
 
-  // ✅ NOUVEAU : Wrapper pour setLocalLoading qui ferme aussi le panneau
   const handleSearchLoading = useCallback(
     (loading) => {
       setLocalLoading(loading);
@@ -167,7 +154,7 @@ const Filters = ({ categories, setLocalLoading }) => {
           </h2>
 
           <button
-            className="md:hidden w-full mb-4 py-2 px-4 bg-white border border-gray-200 rounded-md shadow-sm flex justify-between items-center"
+            className="md:hidden w-full mb-4 py-2 px-4 bg-white border border-lavender-200 rounded-md shadow-sm flex justify-between items-center" // ✅ Bordure lavande
             onClick={() => setOpen((prev) => !prev)}
             aria-expanded={open}
             aria-controls="filter-panel"
@@ -183,7 +170,7 @@ const Filters = ({ categories, setLocalLoading }) => {
           {hasActiveFilters && (
             <button
               onClick={resetFilters}
-              className="text-sm text-blue-600 cursor-pointer hover:text-blue-800 hidden md:block"
+              className="text-sm text-blue-600 cursor-pointer hover:text-blue-700 hidden md:block" // ✅ Bleu pastel
               aria-label="Réinitialiser tous les filtres"
             >
               Réinitialiser
@@ -195,13 +182,14 @@ const Filters = ({ categories, setLocalLoading }) => {
           id="filter-panel"
           className={`${open ? "block" : "hidden"} md:block space-y-4`}
         >
-          {/* ✅ MODIFIÉ : Passer le wrapper au lieu de setLocalLoading directement */}
           <div className="md:hidden mb-4">
             <Search setLoading={handleSearchLoading} />
           </div>
 
           {/* Prix */}
-          <div className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
+          <div className="p-4 border border-lavender-200 bg-white rounded-lg shadow-sm">
+            {" "}
+            {/* ✅ Bordure lavande */}
             <h3 className="font-semibold mb-3 text-gray-700">Prix (Fdj)</h3>
             <div className="grid grid-cols-2 gap-x-2 mb-3">
               <div>
@@ -214,7 +202,7 @@ const Filters = ({ categories, setLocalLoading }) => {
                 <input
                   id="min-price"
                   name="min"
-                  className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-blue-500 w-full"
+                  className="appearance-none border border-lavender-200 bg-pink-50 rounded-md py-2 px-3 hover:border-lavender-300 focus:outline-none focus:border-blue-500 w-full" // ✅ Nouvelles couleurs
                   type="number"
                   min="0"
                   placeholder="Min"
@@ -235,7 +223,7 @@ const Filters = ({ categories, setLocalLoading }) => {
                 <input
                   id="max-price"
                   name="max"
-                  className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-blue-500 w-full"
+                  className="appearance-none border border-lavender-200 bg-pink-50 rounded-md py-2 px-3 hover:border-lavender-300 focus:outline-none focus:border-blue-500 w-full" // ✅ Nouvelles couleurs
                   type="number"
                   min="0"
                   placeholder="Max"
@@ -246,12 +234,11 @@ const Filters = ({ categories, setLocalLoading }) => {
                 />
               </div>
             </div>
-
             <button
               className={`w-full py-2 px-4 ${
                 isSubmitting
-                  ? "bg-blue-400 cursor-not-allowed"
-                  : "bg-blue-600 hover:bg-blue-700"
+                  ? "bg-blue-300 cursor-not-allowed"
+                  : "bg-blue-600 hover:bg-blue-700" // ✅ Bleu pastel
               } text-white cursor-pointer rounded-md transition-colors`}
               onClick={handlePriceFilter}
               aria-label="Appliquer les filtres de prix"
@@ -262,9 +249,10 @@ const Filters = ({ categories, setLocalLoading }) => {
           </div>
 
           {/* Catégories */}
-          <div className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
+          <div className="p-4 border border-lavender-200 bg-white rounded-lg shadow-sm">
+            {" "}
+            {/* ✅ Bordure lavande */}
             <h3 className="font-semibold mb-3 text-gray-700">Catégories</h3>
-
             {isArrayEmpty(categories) ? (
               <div className="w-full text-center py-2">
                 <p className="text-gray-500">Aucune catégorie disponible</p>
@@ -276,8 +264,8 @@ const Filters = ({ categories, setLocalLoading }) => {
                     key={category?._id}
                     className={`flex items-center w-full p-2 rounded-md transition-colors cursor-pointer ${
                       currentCategory === category?._id
-                        ? "bg-blue-100 text-blue-700"
-                        : "hover:bg-gray-100 text-gray-700"
+                        ? "bg-blue-100 text-blue-700" // ✅ Sélection bleu pastel
+                        : "hover:bg-pink-50 text-gray-700" // ✅ Hover rose pastel
                     }`}
                     onClick={() => handleCategoryClick(category?._id)}
                     aria-pressed={currentCategory === category?._id}
@@ -295,7 +283,7 @@ const Filters = ({ categories, setLocalLoading }) => {
             <div className="md:hidden">
               <button
                 onClick={resetFilters}
-                className="w-full py-2 text-center text-sm text-red-600 hover:text-red-800 border border-red-200 cursor-pointer rounded-md hover:bg-red-50"
+                className="w-full py-2 text-center text-sm text-pink-600 hover:text-pink-700 border border-pink-200 cursor-pointer rounded-md hover:bg-pink-50" // ✅ Rose bonbon
                 aria-label="Réinitialiser tous les filtres"
                 disabled={isSubmitting}
               >

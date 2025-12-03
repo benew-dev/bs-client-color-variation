@@ -2,7 +2,41 @@
 
 /* Configuration du thème avec les breakpoints standards */
 @theme {
-  /* Couleurs - garder vos couleurs personnalisées */
+  /* ========================================
+     NOUVELLE PALETTE PASTEL
+     ======================================== */
+
+  /* Couleurs principales - Palette Pastel */
+  --color-lavender-50: #f5f0f8;
+  --color-lavender-100: #e9dff0;
+  --color-lavender-200: #cdb4db; /* Lavande principale */
+  --color-lavender-300: #b89fcc;
+  --color-lavender-400: #a38abd;
+
+  --color-pink-50: #fff5f9;
+  --color-pink-100: #ffe8f2;
+  --color-pink-200: #ffc8dd; /* Rose pastel clair */
+  --color-pink-300: #ffafcc; /* Rose bonbon pastel */
+  --color-pink-400: #ff96bb;
+  --color-pink-500: #ff7daa;
+
+  --color-sky-50: #f0f8ff;
+  --color-sky-100: #e0f2ff;
+  --color-sky-200: #bde0fe; /* Bleu ciel pastel très clair */
+  --color-sky-300: #9dd1fd;
+  --color-sky-400: #7ec2fc;
+
+  --color-blue-50: #e8f4ff;
+  --color-blue-100: #d1e9ff;
+  --color-blue-200: #a2d2ff; /* Bleu pastel clair */
+  --color-blue-300: #82c3ff;
+  --color-blue-400: #62b4ff;
+  --color-blue-500: #42a5ff;
+  --color-blue-600: #2196ff; /* Version saturée pour boutons */
+  --color-blue-700: #1976d2;
+  --color-blue-800: #1565c0;
+
+  /* Couleurs grises conservées pour le texte */
   --color-gray-50: #f9fafb;
   --color-gray-100: #f3f4f6;
   --color-gray-200: #e5e7eb;
@@ -14,13 +48,15 @@
   --color-gray-800: #1f2937;
   --color-gray-900: #111827;
 
-  --color-blue-50: #eff6ff;
-  --color-blue-100: #dbeafe;
-  --color-blue-200: #bfdbfe;
-  --color-blue-500: #3b82f6;
-  --color-blue-600: #2563eb;
-  --color-blue-700: #1d4ed8;
-  --color-blue-800: #1e40af;
+  /* Couleurs d'état (versions pastel) */
+  --color-green-50: #f0fdf4;
+  --color-green-100: #dcfce7;
+  --color-green-200: #bbf7d0;
+  --color-green-300: #86efac;
+  --color-green-500: #22c55e;
+  --color-green-600: #16a34a;
+  --color-green-700: #15803d;
+  --color-green-800: #166534;
 
   --color-red-50: #fef2f2;
   --color-red-100: #fee2e2;
@@ -31,17 +67,15 @@
   --color-red-700: #b91c1c;
   --color-red-800: #991b1b;
 
-  --color-green-50: #f0fdf4;
-  --color-green-100: #dcfce7;
-  --color-green-500: #22c55e;
-  --color-green-600: #16a34a;
-  --color-green-700: #15803d;
-  --color-green-800: #166534;
-
   --color-yellow-50: #fefce8;
   --color-yellow-100: #fef3c7;
   --color-yellow-500: #eab308;
   --color-yellow-700: #a16207;
+
+  --color-amber-50: #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
 
   --color-white: #ffffff;
   --color-black: #000000;

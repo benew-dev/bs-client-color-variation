@@ -1,4 +1,4 @@
-// app/layout.js - Configuration mise à jour avec favicon
+// app/layout.js - Configuration mise à jour avec favicon et nouvelle palette
 
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
@@ -35,7 +35,6 @@ export const metadata = {
     "boutique en ligne",
     "solution d'achat",
   ],
-  // AJOUT DE LA CONFIGURATION DES ICÔNES
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -88,7 +87,6 @@ export const metadata = {
     description:
       "Boutique en ligne simplifiée (BS), Buy It Now est la solution pour acheter et vendre facilement sur Internet.",
     siteName: "BS - Buy It Now",
-    // AJOUT D'IMAGES POUR OPEN GRAPH
     images: [
       {
         url: `${SITE_URL}/og-image.jpg`,
@@ -104,7 +102,6 @@ export const metadata = {
     description: "Boutique en ligne simplifiée (BS), Buy It Now",
     creator: "@benew",
     site: "@benew",
-    // AJOUT D'IMAGES POUR TWITTER
     images: [`${SITE_URL}/og-image.jpg`],
   },
 };
@@ -114,15 +111,17 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#3b82f6" },
-    { media: "(prefers-color-scheme: dark)", color: "#1f2937" },
+    { media: "(prefers-color-scheme: light)", color: "#a2d2ff" }, // ✅ Bleu pastel
+    { media: "(prefers-color-scheme: dark)", color: "#cdb4db" }, // ✅ Lavande
   ],
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <body className="flex flex-col min-h-screen bg-gray-50">
+      <body className="flex flex-col min-h-screen bg-sky-200">
+        {" "}
+        {/* ✅ Nouveau background */}
         <GlobalProvider>
           <ServiceWorkerManager />
           <Suspense>
