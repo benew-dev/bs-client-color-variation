@@ -119,9 +119,9 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <body className="flex flex-col min-h-screen bg-sky-200">
+      <body className="flex flex-col min-h-screen bg-pink-50">
         {" "}
-        {/* ✅ Nouveau background */}
+        {/* ✅ ROSE TRÈS CLAIR au lieu de bleu */}
         <GlobalProvider>
           <ServiceWorkerManager />
           <Suspense>

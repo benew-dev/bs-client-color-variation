@@ -19,7 +19,7 @@ import dynamic from "next/dynamic";
 
 const Search = dynamic(() => import("./Search"), {
   loading: () => (
-    <div className="h-10 w-full max-w-xl bg-pink-50 animate-pulse rounded-md"></div> // ✅ Rose pastel
+    <div className="h-10 w-full max-w-xl bg-pink-50 animate-pulse rounded-md"></div> // ✅ Rose très clair
   ),
   ssr: true,
 });
@@ -27,23 +27,21 @@ const Search = dynamic(() => import("./Search"), {
 const CART_LOAD_DELAY = 500;
 const IS_PRODUCTION = process.env.NODE_ENV === "production";
 
-// ✅ Bouton panier
 const CartButton = memo(({ cartCount }) => {
   return (
     <Link
       href="/cart"
-      className="px-3 py-2 flex flex-row text-gray-700 bg-white shadow-sm border border-lavender-200 rounded-md transition-colors relative hover:bg-pink-50 hover:border-pink-300 cursor-pointer" // ✅ Nouvelles couleurs
+      className="px-3 py-2 flex flex-row text-gray-700 bg-white shadow-sm border border-pink-100 rounded-md transition-colors relative hover:bg-pink-50 hover:border-pink-200 cursor-pointer" // ✅ Bordure rose douce
       aria-label="Panier"
       data-testid="cart-button"
       title="Accéder au panier"
     >
-      <ShoppingCart className="text-lavender-400 w-5" />{" "}
-      {/* ✅ Icône lavande */}
+      <ShoppingCart className="text-blue-400 w-5" /> {/* ✅ Icône bleu doux */}
       <span className="ml-1">Panier ({cartCount > 0 ? cartCount : 0})</span>
       {cartCount > 0 && (
-        <span className="absolute -top-2 -right-2 bg-pink-400 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+        <span className="absolute -top-2 -right-2 bg-lavender-300 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-medium">
           {" "}
-          {/* ✅ Badge rose bonbon */}
+          {/* ✅ Badge lavande */}
           {cartCount}
         </span>
       )}
@@ -53,7 +51,6 @@ const CartButton = memo(({ cartCount }) => {
 
 CartButton.displayName = "CartButton";
 
-// ✅ Dropdown utilisateur
 const UserDropdown = memo(({ user }) => {
   const menuItems = [
     { href: "/me", label: "Mon profil" },
@@ -64,15 +61,15 @@ const UserDropdown = memo(({ user }) => {
   return (
     <div className="relative group">
       <div
-        className="flex items-center space-x-2 px-3 py-2 rounded-md transition-colors hover:bg-pink-50" // ✅ Hover rose pastel
+        className="flex items-center space-x-2 px-3 py-2 rounded-md transition-colors hover:bg-pink-50" // ✅ Hover rose doux
         aria-expanded="false"
         aria-haspopup="true"
         id="user-menu-button"
         title="Menu utilisateur"
       >
-        <div className="relative w-8 h-8 rounded-full overflow-hidden border border-lavender-200">
+        <div className="relative w-8 h-8 rounded-full overflow-hidden border border-pink-200">
           {" "}
-          {/* ✅ Bordure lavande */}
+          {/* ✅ Bordure rose */}
           <Image
             data-testid="profile image"
             alt={`Photo de profil de ${user?.name || "utilisateur"}`}
@@ -101,14 +98,14 @@ const UserDropdown = memo(({ user }) => {
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="user-menu-button"
-        className="absolute right-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-lavender-200 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-50" // ✅ Bordure lavande
+        className="absolute right-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-pink-100 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-50" // ✅ Bordure rose
       >
         <div className="py-1">
           {menuItems.map((item, index) => (
             <Link
               key={`menu-item-${index}`}
               href={item.href}
-              className={`block px-4 py-2 text-sm text-gray-700 hover:bg-pink-50 ${item.className || ""}`} // ✅ Hover rose pastel
+              className={`block px-4 py-2 text-sm text-gray-700 hover:bg-pink-50 ${item.className || ""}`} // ✅ Hover rose
               role="menuitem"
             >
               {item.label}
@@ -116,7 +113,7 @@ const UserDropdown = memo(({ user }) => {
           ))}
           <button
             onClick={() => signOut({ callbackUrl: "/login" })}
-            className="block cursor-pointer w-full text-left px-4 py-2 text-sm text-pink-600 hover:bg-pink-50" // ✅ Rose bonbon
+            className="block cursor-pointer w-full text-left px-4 py-2 text-sm text-pink-600 hover:bg-pink-50" // ✅ Rose pour déconnexion
             role="menuitem"
           >
             Déconnexion
@@ -145,7 +142,6 @@ const Header = () => {
   const loadCartTimeoutRef = useRef(null);
   const signOutTimeoutRef = useRef(null);
   const mobileMenuTimeoutRef = useRef(null);
-
   const isCartLoadingRef = useRef(false);
 
   useEffect(() => {
@@ -278,9 +274,9 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white py-2 border-b border-lavender-200 sticky top-0 z-50 shadow-sm">
+    <header className="bg-white py-2 border-b border-pink-100 sticky top-0 z-50 shadow-sm">
       {" "}
-      {/* ✅ Bordure lavande */}
+      {/* ✅ Bordure rose */}
       <div className="container max-w-[1440px] mx-auto px-4">
         <div className="flex flex-wrap items-center justify-between">
           {/* Logo */}
@@ -301,29 +297,24 @@ const Header = () => {
           <div className="md:hidden flex items-center gap-2">
             {user && (
               <>
-                {/* Bouton Panier Mobile */}
                 <Link
                   href="/cart"
-                  className="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-lavender-200 rounded-md relative hover:bg-pink-50" // ✅ Nouvelles couleurs
+                  className="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-pink-100 rounded-md relative hover:bg-pink-50"
                   aria-label="Panier"
                   title="Accéder au panier"
                 >
-                  <ShoppingCart className="text-lavender-400 w-5" />{" "}
-                  {/* ✅ Icône lavande */}
+                  <ShoppingCart className="text-blue-400 w-5" />
                   {cartCount > 0 && (
-                    <span className="absolute -top-2 -right-2 bg-pink-400 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                      {" "}
-                      {/* ✅ Badge rose bonbon */}
+                    <span className="absolute -top-2 -right-2 bg-lavender-300 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-medium">
                       {cartCount}
                     </span>
                   )}
                 </Link>
 
-                {/* Photo de profil Mobile */}
                 <button
                   onClick={toggleMobileMenu}
                   data-profile-toggle
-                  className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-lavender-200 hover:border-pink-300 transition-colors" // ✅ Nouvelles couleurs
+                  className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-pink-200 hover:border-lavender-300 transition-colors"
                   aria-label={
                     mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"
                   }
@@ -345,11 +336,10 @@ const Header = () => {
               </>
             )}
 
-            {/* Menu Hamburger pour utilisateurs non connectés */}
             {!user && (
               <button
                 onClick={toggleMobileMenu}
-                className="px-3 py-2 border border-lavender-200 rounded-md text-gray-700" // ✅ Bordure lavande
+                className="px-3 py-2 border border-pink-100 rounded-md text-gray-700"
                 aria-label={
                   mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"
                 }
@@ -373,11 +363,10 @@ const Header = () => {
             {!user ? (
               <Link
                 href="/login"
-                className="px-3 py-2 flex flex-row text-gray-700 bg-white shadow-sm border border-lavender-200 rounded-md hover:bg-pink-50 hover:border-pink-300 transition-colors" // ✅ Nouvelles couleurs
+                className="px-3 py-2 flex flex-row text-gray-700 bg-white shadow-sm border border-pink-100 rounded-md hover:bg-pink-50 hover:border-pink-200 transition-colors"
                 data-testid="login"
               >
-                <User className="text-lavender-400 w-5" />{" "}
-                {/* ✅ Icône lavande */}
+                <User className="text-blue-400 w-5" />
                 <span className="ml-1">Connexion</span>
               </Link>
             ) : (
@@ -390,7 +379,7 @@ const Header = () => {
         {mobileMenuOpen && (
           <div
             id="mobile-menu"
-            className="md:hidden mt-4 border-t border-lavender-200 pt-4" // ✅ Bordure lavande
+            className="md:hidden mt-4 border-t border-pink-100 pt-4"
             role="dialog"
             aria-modal="true"
             aria-label="Menu principal"
@@ -400,7 +389,7 @@ const Header = () => {
                 <Link
                   href="/me"
                   onClick={closeMobileMenu}
-                  className="block px-2 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md" // ✅ Hover rose pastel
+                  className="block px-2 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md"
                 >
                   Mon profil
                 </Link>
@@ -408,7 +397,7 @@ const Header = () => {
                 <Link
                   href="/me/orders"
                   onClick={closeMobileMenu}
-                  className="block px-2 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md" // ✅ Hover rose pastel
+                  className="block px-2 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md"
                 >
                   Mes commandes
                 </Link>
@@ -416,7 +405,7 @@ const Header = () => {
                 <Link
                   href="/me/contact"
                   onClick={closeMobileMenu}
-                  className="block px-2 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md" // ✅ Hover rose pastel
+                  className="block px-2 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md"
                 >
                   Contactez le vendeur
                 </Link>
@@ -426,7 +415,7 @@ const Header = () => {
                     closeMobileMenu();
                     await handleSignOut();
                   }}
-                  className="block cursor-pointer w-full text-left px-2 py-2 text-sm text-pink-600 hover:bg-pink-50 rounded-md" // ✅ Rose bonbon
+                  className="block cursor-pointer w-full text-left px-2 py-2 text-sm text-pink-600 hover:bg-pink-50 rounded-md"
                 >
                   Déconnexion
                 </button>
@@ -435,7 +424,7 @@ const Header = () => {
               <Link
                 href="/login"
                 onClick={closeMobileMenu}
-                className="block w-full text-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700" // ✅ Bleu pastel
+                className="block w-full text-center px-4 py-2 bg-blue-200 text-gray-800 font-medium rounded-md hover:bg-blue-300" // ✅ Bleu pastel
               >
                 Connexion
               </Link>

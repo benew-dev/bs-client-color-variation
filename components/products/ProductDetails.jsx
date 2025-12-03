@@ -48,7 +48,7 @@ const ProductImageGallery = memo(function ProductImageGallery({
   return (
     <aside aria-label="Product images">
       <div
-        className="border border-lavender-200 shadow-sm p-3 text-center rounded-lg mb-5 bg-white relative h-auto max-h-[500px] flex items-center justify-center overflow-hidden" // ✅ Bordure lavande
+        className="border border-pink-100 shadow-sm p-3 text-center rounded-lg mb-5 bg-white relative h-auto max-h-[500px] flex items-center justify-center overflow-hidden" // ✅ Bordure rose
         role="img"
         aria-label={`Main image of ${product?.name || "product"}`}
       >
@@ -67,7 +67,7 @@ const ProductImageGallery = memo(function ProductImageGallery({
         </div>
 
         <button
-          className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-sm opacity-70 hover:opacity-100 transition-opacity"
+          className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-sm opacity-70 hover:opacity-100 transition-opacity border border-pink-100" // ✅ Bordure rose
           aria-label="Zoom image"
           onClick={() => {}}
         >
@@ -76,7 +76,7 @@ const ProductImageGallery = memo(function ProductImageGallery({
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            className="w-5 h-5"
+            className="w-5 h-5 text-gray-600"
           >
             <path
               strokeLinecap="round"
@@ -89,7 +89,7 @@ const ProductImageGallery = memo(function ProductImageGallery({
       </div>
 
       <div
-        className="space-x-2 overflow-x-auto pb-3 flex flex-nowrap scrollbar-thin scrollbar-thumb-lavender-300 scrollbar-track-pink-50 -mx-2 px-2 hide-scrollbar sm:flex-wrap" // ✅ Scrollbar colorée
+        className="space-x-2 overflow-x-auto pb-3 flex flex-nowrap scrollbar-thin scrollbar-thumb-lavender-200 scrollbar-track-pink-50 -mx-2 px-2 hide-scrollbar sm:flex-wrap" // ✅ Scrollbar colorée
         aria-label="Product thumbnail images"
         role="group"
       >
@@ -98,9 +98,9 @@ const ProductImageGallery = memo(function ProductImageGallery({
             key={img?.url || `img-${index}`}
             className={`inline-block border ${
               selectedImage === img?.url
-                ? "border-blue-500 ring-2 ring-blue-200" // ✅ Sélection bleu pastel
-                : "border-lavender-200" // ✅ Bordure lavande
-            } cursor-pointer p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all`}
+                ? "border-blue-300 ring-2 ring-blue-100" // ✅ Sélection bleu doux
+                : "border-pink-100" // ✅ Bordure rose
+            } cursor-pointer p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200 transition-all hover:border-lavender-200`}
             onClick={() => onImageSelect(img?.url)}
             aria-label={`View product image ${index + 1}`}
             aria-pressed={selectedImage === img?.url}
@@ -142,7 +142,9 @@ const ProductInfo = memo(function ProductInfo({
 
       <div className="flex flex-wrap items-center space-x-2 mb-2">
         {product?.verified && (
-          <span className="text-green-700 flex items-center">
+          <span className="text-green-700 flex items-center bg-green-50 px-2 py-1 rounded-full text-sm">
+            {" "}
+            {/* ✅ Badge avec background */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 mr-1"
@@ -162,7 +164,7 @@ const ProductInfo = memo(function ProductInfo({
 
       <div className="flex flex-wrap items-baseline mb-4">
         <p
-          className="font-semibold text-xl sm:text-2xl text-blue-600 mr-3" // ✅ Prix bleu pastel
+          className="font-bold text-2xl sm:text-3xl text-blue-400 mr-3" // ✅ Prix en bleu pastel
           aria-label="Prix"
         >
           {formattedPrice}
@@ -190,11 +192,11 @@ const ProductInfo = memo(function ProductInfo({
 
       <div className="flex flex-col sm:flex-row gap-3 mb-6">
         <button
-          className={`w-full sm:w-auto px-6 py-3 inline-block text-white font-medium text-center rounded-lg transition-colors 
+          className={`w-full sm:w-auto px-6 py-3 inline-block font-medium text-center rounded-lg transition-all shadow-sm
             ${
               inStock
-                ? "bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-300 focus:outline-none cursor-pointer" // ✅ Bleu pastel
-                : "bg-gray-400 cursor-not-allowed"
+                ? "bg-blue-200 text-gray-800 hover:bg-blue-300 hover:shadow-md focus:ring-2 focus:ring-blue-200 focus:outline-none cursor-pointer active:scale-95" // ✅ Bleu pastel
+                : "bg-gray-200 text-gray-500 cursor-not-allowed opacity-60"
             }`}
           onClick={onAddToCart}
           disabled={!inStock || isAddingToCart}
@@ -203,7 +205,7 @@ const ProductInfo = memo(function ProductInfo({
           {isAddingToCart ? (
             <span className="inline-flex items-center">
               <svg
-                className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                className="animate-spin -ml-1 mr-2 h-4 w-4"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -225,15 +227,15 @@ const ProductInfo = memo(function ProductInfo({
               Ajout en cours...
             </span>
           ) : (
-            <div className="flex flex-row">
-              <ShoppingCart />
+            <div className="flex flex-row items-center justify-center">
+              <ShoppingCart className="mr-2" />
               {inStock ? "Ajouter au panier" : "Indisponible"}
             </div>
           )}
         </button>
 
         <button
-          className="w-full sm:w-auto px-4 py-2 flex flex-row text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 focus:ring-2 focus:ring-blue-300 focus:outline-none transition-colors" // ✅ Bleu pastel
+          className="w-full sm:w-auto px-4 py-2 flex flex-row items-center justify-center text-blue-400 border border-blue-200 rounded-lg hover:bg-blue-50 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all" // ✅ Bleu doux
           aria-label="Partager ce produit"
           onClick={onShare}
         >
@@ -711,14 +713,14 @@ function ProductDetails({ product, sameCategoryProducts }) {
   }
 
   return (
-    <div className="bg-sky-200 py-6 sm:py-10">
+    <div className="bg-white py-6 sm:py-10">
       {" "}
-      {/* ✅ Background bleu ciel pastel */}
+      {/* ✅ BLANC au lieu de sky-200 */}
       {breadCrumbs && <BreadCrumbs breadCrumbs={breadCrumbs} />}
       <div className="container max-w-6xl mx-auto px-4">
-        <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 border border-lavender-100">
+        <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 border border-pink-100">
           {" "}
-          {/* ✅ Bordure lavande */}
+          {/* ✅ Bordure rose */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <ProductImageGallery
               product={product}
@@ -735,9 +737,9 @@ function ProductDetails({ product, sameCategoryProducts }) {
             />
           </div>
           {product.specifications && (
-            <div className="border-t border-lavender-200 pt-8 mt-8">
+            <div className="border-t border-pink-100 pt-8 mt-8">
               {" "}
-              {/* ✅ Bordure lavande */}
+              {/* ✅ Bordure rose */}
               <h2 className="text-xl font-semibold mb-4">Spécifications</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {Object.entries(product.specifications).map(([key, value]) => (

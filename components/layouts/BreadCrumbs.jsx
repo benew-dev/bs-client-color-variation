@@ -6,9 +6,9 @@ import { ChevronRight } from "lucide-react";
 
 const BreadCrumbs = memo(({ breadCrumbs }) => {
   return (
-    <section className="py-5 sm:py-7 bg-pink-100">
+    <section className="py-5 sm:py-7 bg-lavender-50 border-b border-pink-100">
       {" "}
-      {/* ✅ Rose pastel clair */}
+      {/* ✅ Lavande très clair + bordure rose */}
       <div className="container max-w-(--breakpoint-xl) mx-auto px-4">
         <ol className="inline-flex flex-wrap text-gray-600 space-x-1 md:space-x-3 items-center">
           {isArrayEmpty(breadCrumbs)
@@ -17,7 +17,7 @@ const BreadCrumbs = memo(({ breadCrumbs }) => {
                 <li className="inline-flex items-center" key={index}>
                   <Link
                     href={breadCrumb.url}
-                    className="text-gray-600 hover:text-blue-600" // ✅ Hover bleu pastel
+                    className="text-gray-600 hover:text-blue-400 transition-colors" // ✅ Hover bleu doux
                   >
                     {breadCrumb.name}
                   </Link>

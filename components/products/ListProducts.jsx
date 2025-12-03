@@ -76,7 +76,7 @@ const ListProducts = ({ data, categories }) => {
       console.error(err);
       throw err;
     }
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     if (isInitialLoad) {
@@ -91,7 +91,7 @@ const ListProducts = ({ data, categories }) => {
   if (!hasValidData) {
     return (
       <div
-        className="p-4 bg-pink-50 border border-pink-200 rounded-md my-4" // ✅ Rose pastel
+        className="p-4 bg-pink-50 border border-pink-200 rounded-md my-4" // ✅ Rose doux
         role="alert"
       >
         <p className="font-medium text-pink-700">
@@ -112,10 +112,10 @@ const ListProducts = ({ data, categories }) => {
             />
           ) : (
             <div className="md:w-1/3 lg:w-1/4 px-4">
-              <div className="p-4 bg-pink-50 rounded-md">
+              <div className="p-4 bg-pink-50 rounded-md border border-pink-100">
                 {" "}
-                {/* ✅ Rose pastel */}
-                <p>Chargement des filtres...</p>
+                {/* ✅ Rose doux */}
+                <p className="text-gray-600">Chargement des filtres...</p>
               </div>
             </div>
           )}
@@ -124,9 +124,10 @@ const ListProducts = ({ data, categories }) => {
             className="md:w-2/3 lg:w-3/4 px-3"
             aria-label="Liste des produits"
           >
+            {/* Récapitulatif des filtres */}
             {filterSummary && (
               <div
-                className="mb-4 p-3 bg-lavender-100 rounded-lg text-sm text-lavender-800 border border-lavender-200" // ✅ Lavande
+                className="mb-4 p-3 bg-lavender-50 rounded-lg text-sm text-lavender-800 border border-lavender-100" // ✅ Lavande doux
                 aria-live="polite"
                 aria-label="Filtres appliqués"
               >
@@ -174,7 +175,7 @@ const ListProducts = ({ data, categories }) => {
                 </p>
                 <button
                   onClick={handleResetFilters}
-                  className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors" // ✅ Bleu pastel
+                  className="mt-6 px-4 py-2 bg-blue-200 text-gray-800 font-medium rounded-md hover:bg-blue-300 transition-colors shadow-sm" // ✅ Bleu pastel
                   aria-label="Voir tous les produits disponibles"
                 >
                   Voir tous les produits

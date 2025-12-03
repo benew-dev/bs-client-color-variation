@@ -7,12 +7,14 @@
      ======================================== */
 
   /* Couleurs principales - Palette Pastel */
+  --color-lavender-25: #fdfcfe; /* Presque blanc avec touche lavande */
   --color-lavender-50: #f5f0f8;
   --color-lavender-100: #e9dff0;
   --color-lavender-200: #cdb4db; /* Lavande principale */
   --color-lavender-300: #b89fcc;
   --color-lavender-400: #a38abd;
 
+  --color-pink-25: #fffbfd; /* Presque blanc avec touche rose */
   --color-pink-50: #fff5f9;
   --color-pink-100: #ffe8f2;
   --color-pink-200: #ffc8dd; /* Rose pastel clair */
@@ -29,6 +31,7 @@
   --color-blue-50: #e8f4ff;
   --color-blue-100: #d1e9ff;
   --color-blue-200: #a2d2ff; /* Bleu pastel clair */
+  --color-blue-250: #8ac2ff; /* Entre 200 et 300, plus vif */
   --color-blue-300: #82c3ff;
   --color-blue-400: #62b4ff;
   --color-blue-500: #42a5ff;

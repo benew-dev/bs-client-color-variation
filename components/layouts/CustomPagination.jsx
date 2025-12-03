@@ -35,7 +35,6 @@ const CustomPagination = memo(({ totalPages = 1 }) => {
   const handlePageChange = useCallback(
     (newPage) => {
       if (isNavigating) return;
-
       if (newPage === currentPage) return;
 
       setIsNavigating(true);
@@ -77,7 +76,7 @@ const CustomPagination = memo(({ totalPages = 1 }) => {
       {isNavigating ? (
         <div className="flex items-center space-x-2 text-gray-600">
           <svg
-            className="animate-spin -ml-1 mr-3 h-5 w-5 text-blue-600" // ✅ Spinner bleu pastel
+            className="animate-spin -ml-1 mr-3 h-5 w-5 text-blue-400" // ✅ Spinner bleu doux
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"

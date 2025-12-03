@@ -2,9 +2,9 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-lavender-200 to-pink-200 text-gray-800 py-6 mt-auto">
+    <footer className="bg-gradient-to-r from-lavender-50 via-pink-50 to-sky-50 text-gray-800 py-6 mt-auto border-t border-pink-100">
       {" "}
-      {/* ✅ Dégradé lavande-rose */}
+      {/* ✅ Dégradé très doux */}
       <div className="container max-w-[1440px] mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -22,7 +22,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/"
-                  className="text-gray-700 hover:text-blue-600 transition-colors" // ✅ Hover bleu pastel
+                  className="text-gray-700 hover:text-blue-400 transition-colors" // ✅ Hover bleu doux
                 >
                   Accueil
                 </Link>
@@ -30,7 +30,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/me"
-                  className="text-gray-700 hover:text-blue-600 transition-colors" // ✅ Hover bleu pastel
+                  className="text-gray-700 hover:text-blue-400 transition-colors"
                 >
                   Mon compte
                 </Link>
@@ -38,7 +38,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/cart"
-                  className="text-gray-700 hover:text-blue-600 transition-colors" // ✅ Hover bleu pastel
+                  className="text-gray-700 hover:text-blue-400 transition-colors"
                 >
                   Panier
                 </Link>
@@ -55,9 +55,7 @@ const Footer = () => {
             </address>
           </div>
         </div>
-        <div className="border-t border-lavender-300 mt-8 pt-6 text-center text-sm text-gray-600">
-          {" "}
-          {/* ✅ Bordure lavande */}
+        <div className="border-t border-pink-200 mt-8 pt-6 text-center text-sm text-gray-600">
           <p>© {new Date().getFullYear()} Buy It Now. Tous droits réservés.</p>
         </div>
       </div>

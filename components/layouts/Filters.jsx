@@ -154,7 +154,7 @@ const Filters = ({ categories, setLocalLoading }) => {
           </h2>
 
           <button
-            className="md:hidden w-full mb-4 py-2 px-4 bg-white border border-lavender-200 rounded-md shadow-sm flex justify-between items-center" // ✅ Bordure lavande
+            className="md:hidden w-full mb-4 py-2 px-4 bg-white border border-pink-200 rounded-md shadow-sm flex justify-between items-center" // ✅ Bordure rose douce
             onClick={() => setOpen((prev) => !prev)}
             aria-expanded={open}
             aria-controls="filter-panel"
@@ -170,7 +170,7 @@ const Filters = ({ categories, setLocalLoading }) => {
           {hasActiveFilters && (
             <button
               onClick={resetFilters}
-              className="text-sm text-blue-600 cursor-pointer hover:text-blue-700 hidden md:block" // ✅ Bleu pastel
+              className="text-sm text-blue-400 cursor-pointer hover:text-blue-500 hidden md:block" // ✅ Bleu doux
               aria-label="Réinitialiser tous les filtres"
             >
               Réinitialiser
@@ -187,9 +187,9 @@ const Filters = ({ categories, setLocalLoading }) => {
           </div>
 
           {/* Prix */}
-          <div className="p-4 border border-lavender-200 bg-white rounded-lg shadow-sm">
+          <div className="p-4 border border-pink-100 bg-white rounded-lg shadow-sm">
             {" "}
-            {/* ✅ Bordure lavande */}
+            {/* ✅ Bordure rose très douce */}
             <h3 className="font-semibold mb-3 text-gray-700">Prix (Fdj)</h3>
             <div className="grid grid-cols-2 gap-x-2 mb-3">
               <div>
@@ -202,7 +202,7 @@ const Filters = ({ categories, setLocalLoading }) => {
                 <input
                   id="min-price"
                   name="min"
-                  className="appearance-none border border-lavender-200 bg-pink-50 rounded-md py-2 px-3 hover:border-lavender-300 focus:outline-none focus:border-blue-500 w-full" // ✅ Nouvelles couleurs
+                  className="appearance-none border border-pink-100 bg-white rounded-md py-2 px-3 hover:border-pink-200 focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-100 w-full" // ✅ Background blanc
                   type="number"
                   min="0"
                   placeholder="Min"
@@ -223,7 +223,7 @@ const Filters = ({ categories, setLocalLoading }) => {
                 <input
                   id="max-price"
                   name="max"
-                  className="appearance-none border border-lavender-200 bg-pink-50 rounded-md py-2 px-3 hover:border-lavender-300 focus:outline-none focus:border-blue-500 w-full" // ✅ Nouvelles couleurs
+                  className="appearance-none border border-pink-100 bg-white rounded-md py-2 px-3 hover:border-pink-200 focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-100 w-full"
                   type="number"
                   min="0"
                   placeholder="Max"
@@ -237,9 +237,9 @@ const Filters = ({ categories, setLocalLoading }) => {
             <button
               className={`w-full py-2 px-4 ${
                 isSubmitting
-                  ? "bg-blue-300 cursor-not-allowed"
-                  : "bg-blue-600 hover:bg-blue-700" // ✅ Bleu pastel
-              } text-white cursor-pointer rounded-md transition-colors`}
+                  ? "bg-blue-200 cursor-not-allowed"
+                  : "bg-blue-200 hover:bg-blue-300" // ✅ Bleu pastel a2d2ff
+              } text-gray-800 font-medium cursor-pointer rounded-md transition-colors shadow-sm`}
               onClick={handlePriceFilter}
               aria-label="Appliquer les filtres de prix"
               disabled={isSubmitting}
@@ -249,10 +249,9 @@ const Filters = ({ categories, setLocalLoading }) => {
           </div>
 
           {/* Catégories */}
-          <div className="p-4 border border-lavender-200 bg-white rounded-lg shadow-sm">
-            {" "}
-            {/* ✅ Bordure lavande */}
+          <div className="p-4 border border-pink-100 bg-white rounded-lg shadow-sm">
             <h3 className="font-semibold mb-3 text-gray-700">Catégories</h3>
+
             {isArrayEmpty(categories) ? (
               <div className="w-full text-center py-2">
                 <p className="text-gray-500">Aucune catégorie disponible</p>
@@ -264,8 +263,8 @@ const Filters = ({ categories, setLocalLoading }) => {
                     key={category?._id}
                     className={`flex items-center w-full p-2 rounded-md transition-colors cursor-pointer ${
                       currentCategory === category?._id
-                        ? "bg-blue-100 text-blue-700" // ✅ Sélection bleu pastel
-                        : "hover:bg-pink-50 text-gray-700" // ✅ Hover rose pastel
+                        ? "bg-blue-100 text-blue-700 font-medium" // ✅ Sélection bleu clair
+                        : "hover:bg-pink-50 text-gray-700" // ✅ Hover rose très doux
                     }`}
                     onClick={() => handleCategoryClick(category?._id)}
                     aria-pressed={currentCategory === category?._id}
@@ -283,7 +282,7 @@ const Filters = ({ categories, setLocalLoading }) => {
             <div className="md:hidden">
               <button
                 onClick={resetFilters}
-                className="w-full py-2 text-center text-sm text-pink-600 hover:text-pink-700 border border-pink-200 cursor-pointer rounded-md hover:bg-pink-50" // ✅ Rose bonbon
+                className="w-full py-2 text-center text-sm text-pink-600 hover:text-pink-700 border border-pink-200 cursor-pointer rounded-md hover:bg-pink-50"
                 aria-label="Réinitialiser tous les filtres"
                 disabled={isSubmitting}
               >

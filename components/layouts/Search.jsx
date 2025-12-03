@@ -102,7 +102,7 @@ const Search = ({ setLoading }) => {
     >
       <input
         ref={inputRef}
-        className="grow appearance-none border border-lavender-200 bg-pink-50 rounded-md mr-2 py-2 px-3 hover:border-lavender-300 focus:outline-none focus:border-blue-500" // ✅ Nouvelles couleurs
+        className="grow appearance-none border border-pink-100 bg-white rounded-md mr-2 py-2 px-3 hover:border-pink-200 focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-100" // ✅ Blanc avec bordure rose
         type="search"
         placeholder="Rechercher un produit..."
         value={keyword}
@@ -116,9 +116,9 @@ const Search = ({ setLoading }) => {
         type="button"
         className={`px-4 py-2 inline-block border border-transparent ${
           isSubmitting
-            ? "bg-blue-300 cursor-not-allowed"
-            : "bg-blue-600 hover:bg-blue-700" // ✅ Bleu pastel
-        } text-white rounded-md transition-colors`}
+            ? "bg-blue-200 cursor-not-allowed"
+            : "bg-blue-200 hover:bg-blue-300" // ✅ Bleu pastel
+        } text-gray-800 font-medium rounded-md transition-colors shadow-sm`}
         onClick={debouncedSubmit}
         disabled={isSubmitting}
         aria-label="Lancer la recherche"
