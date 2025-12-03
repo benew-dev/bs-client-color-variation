@@ -44,5 +44,9 @@
     "eslint-plugin-security": "^3.0.1",
     "prettier": "^3.7.4",
     "tailwindcss": "^4"
-  }
+  },
+  "browserslist": [
+    "defaults and fully supports es6-module",
+    "maintained node versions"
+  ]
 }
