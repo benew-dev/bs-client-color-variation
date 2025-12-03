@@ -117,8 +117,8 @@ const Search = ({ setLoading }) => {
         className={`px-4 py-2 inline-block border border-transparent ${
           isSubmitting
             ? "bg-blue-200 cursor-not-allowed"
-            : "bg-blue-200 hover:bg-blue-300" // ✅ Bleu pastel
-        } text-gray-800 font-medium rounded-md transition-colors shadow-sm`}
+            : "bg-gradient-btn-primary hover:bg-gradient-btn-primary-hover"
+        } text-gray-800 font-medium rounded-md transition-all shadow-sm hover:shadow-md`}
         onClick={debouncedSubmit}
         disabled={isSubmitting}
         aria-label="Lancer la recherche"

@@ -175,7 +175,7 @@ const ListProducts = ({ data, categories }) => {
                 </p>
                 <button
                   onClick={handleResetFilters}
-                  className="mt-6 px-4 py-2 bg-blue-200 text-gray-800 font-medium rounded-md hover:bg-blue-300 transition-colors shadow-sm" // ✅ Bleu pastel
+                  className="mt-6 px-4 py-2 bg-gradient-btn-primary text-gray-800 font-medium rounded-md hover:bg-gradient-btn-primary-hover transition-all shadow-sm hover:shadow-md"
                   aria-label="Voir tous les produits disponibles"
                 >
                   Voir tous les produits

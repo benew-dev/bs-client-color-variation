@@ -238,8 +238,8 @@ const Filters = ({ categories, setLocalLoading }) => {
               className={`w-full py-2 px-4 ${
                 isSubmitting
                   ? "bg-blue-200 cursor-not-allowed"
-                  : "bg-blue-200 hover:bg-blue-300" // ✅ Bleu pastel a2d2ff
-              } text-gray-800 font-medium cursor-pointer rounded-md transition-colors shadow-sm`}
+                  : "bg-gradient-btn-primary hover:bg-gradient-btn-primary-hover"
+              } text-gray-800 font-medium cursor-pointer rounded-md transition-all shadow-sm hover:shadow-md`}
               onClick={handlePriceFilter}
               aria-label="Appliquer les filtres de prix"
               disabled={isSubmitting}

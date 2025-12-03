@@ -193,11 +193,11 @@ const ProductInfo = memo(function ProductInfo({
       <div className="flex flex-col sm:flex-row gap-3 mb-6">
         <button
           className={`w-full sm:w-auto px-6 py-3 inline-block font-medium text-center rounded-lg transition-all shadow-sm
-            ${
-              inStock
-                ? "bg-blue-200 text-gray-800 hover:bg-blue-300 hover:shadow-md focus:ring-2 focus:ring-blue-200 focus:outline-none cursor-pointer active:scale-95" // ✅ Bleu pastel
-                : "bg-gray-200 text-gray-500 cursor-not-allowed opacity-60"
-            }`}
+          ${
+            inStock
+              ? "bg-gradient-btn-primary text-gray-800 hover:bg-gradient-btn-primary-hover hover:shadow-md focus:ring-2 focus:ring-blue-200 focus:outline-none cursor-pointer active:scale-95"
+              : "bg-gray-200 text-gray-500 cursor-not-allowed opacity-60"
+          }`}
           onClick={onAddToCart}
           disabled={!inStock || isAddingToCart}
           aria-label={inStock ? "Ajouter au panier" : "Produit indisponible"}
@@ -294,9 +294,7 @@ const ProductInfo = memo(function ProductInfo({
       </ul>
 
       {product?.sold > 10 && (
-        <div className="mt-4 flex flex-row bg-pink-50 border border-pink-200 rounded-lg px-3 py-2 text-pink-700 text-sm mr-2">
-          {" "}
-          {/* ✅ Rose pastel */}
+        <div className="mt-4 flex flex-row bg-gradient-badge-promo border border-amber-200 rounded-lg px-3 py-2 text-amber-900 text-sm mr-2 shadow-sm">
           <Truck className="mr-1" />
           {product.sold > 100 ? "Très populaire" : "Populaire"}
         </div>
@@ -305,9 +303,7 @@ const ProductInfo = memo(function ProductInfo({
       {product?.createdAt &&
         new Date(product.createdAt) >
           new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) && (
-          <div className="mt-4 flex flex-row bg-lavender-50 border border-lavender-200 rounded-lg px-3 py-2 text-lavender-700 text-sm">
-            {" "}
-            {/* ✅ Lavande */}
+          <div className="mt-4 flex flex-row bg-gradient-badge-new border border-blue-300 rounded-lg px-3 py-2 text-white text-sm shadow-sm">
             <Star className="mr-1" />
             Nouveau
           </div>
@@ -473,9 +469,7 @@ const RelatedProductsCarousel = memo(function RelatedProductsCarousel({
                     {product?.createdAt &&
                       new Date(product.createdAt) >
                         new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) && (
-                        <div className="absolute top-2 left-2 bg-lavender-300 text-white text-xs px-2 py-1 rounded-full font-medium">
-                          {" "}
-                          {/* ✅ Badge lavande */}
+                        <div className="absolute top-2 left-2 bg-gradient-badge-new text-white text-xs px-2 py-1 rounded-full font-medium shadow-sm">
                           Nouveau
                         </div>
                       )}

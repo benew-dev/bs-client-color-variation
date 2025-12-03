@@ -2,9 +2,10 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-lavender-50 via-pink-50 to-sky-50 text-gray-800 py-6 mt-auto border-t border-pink-100">
-      {" "}
-      {/* ✅ Dégradé très doux */}
+    <footer className="bg-gradient-footer text-gray-800 py-6 mt-auto relative">
+      {/* ✅ Bordure top gradient (3px horizontal bleu) */}
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400"></div>
+
       <div className="container max-w-[1440px] mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -22,7 +23,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/"
-                  className="text-gray-700 hover:text-blue-400 transition-colors" // ✅ Hover bleu doux
+                  className="text-gray-700 hover:text-blue-400 transition-colors"
                 >
                   Accueil
                 </Link>

@@ -147,7 +147,7 @@ const ProductItem = memo(({ product }) => {
             </div>
           </div>
         </div>
-        <div className="md:w-1/4 border-t lg:border-t-0 lg:border-l border-pink-100 bg-gradient-to-br from-white to-pink-25">
+        <div className="md:w-1/4 border-t lg:border-t-0 lg:border-l border-pink-100 bg-gradient-card-action">
           {" "}
           {/* ✅ Bordure rose + dégradé subtil */}
           <div className="p-5 flex flex-col justify-between h-full">
@@ -184,7 +184,7 @@ const ProductItem = memo(({ product }) => {
               <button
                 disabled={!inStock}
                 className={`px-4 lg:px-6 py-2.5 inline-block text-sm lg:text-base font-medium text-gray-800 rounded-md transition-all shadow-sm
-                  ${inStock ? "bg-blue-200 hover:bg-blue-300 hover:shadow-md active:scale-95" : "bg-gray-200 cursor-not-allowed opacity-60"}`} // ✅ Bleu pastel / Gris désactivé
+                      ${inStock ? "bg-gradient-btn-primary hover:bg-gradient-btn-primary-hover hover:shadow-md active:scale-95" : "bg-gray-200 cursor-not-allowed opacity-60"}`}
                 onClick={(e) => inStock && addToCartHandler(e)}
                 aria-label={
                   inStock ? "Ajouter au panier" : "Produit indisponible"

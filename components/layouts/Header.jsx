@@ -274,8 +274,8 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white py-2 border-b border-pink-100 sticky top-0 z-50 shadow-sm">
-      {" "}
+    <header className="bg-white py-2 sticky top-0 z-50 shadow-sm relative">
+      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-blue-200 via-blue-250 to-blue-300"></div>
       {/* ✅ Bordure rose */}
       <div className="container max-w-[1440px] mx-auto px-4">
         <div className="flex flex-wrap items-center justify-between">
@@ -424,7 +424,7 @@ const Header = () => {
               <Link
                 href="/login"
                 onClick={closeMobileMenu}
-                className="block w-full text-center px-4 py-2 bg-blue-200 text-gray-800 font-medium rounded-md hover:bg-blue-300" // ✅ Bleu pastel
+                className="block w-full text-center px-4 py-2 bg-gradient-btn-primary text-gray-800 font-medium rounded-md hover:bg-gradient-btn-primary-hover transition-all shadow-sm hover:shadow-md"
               >
                 Connexion
               </Link>
