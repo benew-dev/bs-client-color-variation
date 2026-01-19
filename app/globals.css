@@ -95,10 +95,7 @@
 @layer utilities {
   /* Gradient Background (ultra-subtil pour body) */
   .bg-gradient-subtle {
-    background:
-      radial-gradient(at 20% 30%, #e9dff0 0px, transparent 50%),
-      radial-gradient(at 80% 70%, #bde0fe 0px, transparent 50%),
-      radial-gradient(at 50% 100%, #ffc8dd 0px, transparent 50%), #f9fafb;
+    background: radial-gradient(ellipse at center, #ffffff 0%, #f9fafb 100%);
   }
 
   /* Gradient Footer (fort et impactant) */

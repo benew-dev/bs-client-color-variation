@@ -19,7 +19,7 @@ import dynamic from "next/dynamic";
 
 const Search = dynamic(() => import("./Search"), {
   loading: () => (
-    <div className="h-10 w-full max-w-xl bg-white/20 backdrop-blur-sm animate-pulse rounded-md border border-white/30"></div>
+    <div className="h-10 w-full max-w-xl bg-pink-50 animate-pulse rounded-md"></div> // ✅ Rose très clair
   ),
   ssr: true,
 });
@@ -31,15 +31,17 @@ const CartButton = memo(({ cartCount }) => {
   return (
     <Link
       href="/cart"
-      className="px-3 py-2 flex flex-row text-gray-700 bg-white/30 backdrop-blur-md shadow-lg border border-white/40 rounded-md transition-colors relative hover:bg-white/40 hover:border-white/50 cursor-pointer"
+      className="px-3 py-2 flex flex-row text-gray-700 bg-white shadow-sm border border-pink-100 rounded-md transition-colors relative hover:bg-pink-50 hover:border-pink-200 cursor-pointer" // ✅ Bordure rose douce
       aria-label="Panier"
       data-testid="cart-button"
       title="Accéder au panier"
     >
-      <ShoppingCart className="text-blue-400 w-5" />
+      <ShoppingCart className="text-blue-400 w-5" /> {/* ✅ Icône bleu doux */}
       <span className="ml-1">Panier ({cartCount > 0 ? cartCount : 0})</span>
       {cartCount > 0 && (
-        <span className="absolute -top-2 -right-2 bg-lavender-300 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-medium shadow-md">
+        <span className="absolute -top-2 -right-2 bg-lavender-300 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-medium">
+          {" "}
+          {/* ✅ Badge lavande */}
           {cartCount}
         </span>
       )}
@@ -59,13 +61,15 @@ const UserDropdown = memo(({ user }) => {
   return (
     <div className="relative group">
       <div
-        className="flex items-center space-x-2 px-3 py-2 rounded-md transition-colors hover:bg-white/20 backdrop-blur-sm"
+        className="flex items-center space-x-2 px-3 py-2 rounded-md transition-colors hover:bg-pink-50" // ✅ Hover rose doux
         aria-expanded="false"
         aria-haspopup="true"
         id="user-menu-button"
         title="Menu utilisateur"
       >
-        <div className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-white/40 shadow-sm">
+        <div className="relative w-8 h-8 rounded-full overflow-hidden border border-pink-200">
+          {" "}
+          {/* ✅ Bordure rose */}
           <Image
             data-testid="profile image"
             alt={`Photo de profil de ${user?.name || "utilisateur"}`}
@@ -94,14 +98,14 @@ const UserDropdown = memo(({ user }) => {
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="user-menu-button"
-        className="absolute right-0 mt-1 w-48 bg-white/40 backdrop-blur-lg rounded-md shadow-lg border border-white/50 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-50"
+        className="absolute right-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-pink-100 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-50" // ✅ Bordure rose
       >
         <div className="py-1">
           {menuItems.map((item, index) => (
             <Link
               key={`menu-item-${index}`}
               href={item.href}
-              className={`block px-4 py-2 text-sm text-gray-700 hover:bg-white/30 ${item.className || ""}`}
+              className={`block px-4 py-2 text-sm text-gray-700 hover:bg-pink-50 ${item.className || ""}`} // ✅ Hover rose
               role="menuitem"
             >
               {item.label}
@@ -109,7 +113,7 @@ const UserDropdown = memo(({ user }) => {
           ))}
           <button
             onClick={() => signOut({ callbackUrl: "/login" })}
-            className="block cursor-pointer w-full text-left px-4 py-2 text-sm text-pink-600 hover:bg-white/30"
+            className="block cursor-pointer w-full text-left px-4 py-2 text-sm text-pink-600 hover:bg-pink-50" // ✅ Rose pour déconnexion
             role="menuitem"
           >
             Déconnexion
@@ -270,8 +274,9 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white/20 backdrop-blur-md py-2 sticky top-0 z-50 shadow-lg border-b border-white/30 relative">
+    <header className="bg-white py-2 sticky top-0 z-50 shadow-sm relative">
       <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-blue-200 via-blue-250 to-blue-300"></div>
+      {/* ✅ Bordure rose */}
       <div className="container max-w-[1440px] mx-auto px-4">
         <div className="flex flex-wrap items-center justify-between">
           {/* Logo */}
@@ -294,13 +299,13 @@ const Header = () => {
               <>
                 <Link
                   href="/cart"
-                  className="px-3 py-2 inline-block text-center text-gray-700 bg-white/30 backdrop-blur-sm shadow-md border border-white/40 rounded-md relative hover:bg-white/40"
+                  className="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-pink-100 rounded-md relative hover:bg-pink-50"
                   aria-label="Panier"
                   title="Accéder au panier"
                 >
                   <ShoppingCart className="text-blue-400 w-5" />
                   {cartCount > 0 && (
-                    <span className="absolute -top-2 -right-2 bg-lavender-300 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-medium shadow-md">
+                    <span className="absolute -top-2 -right-2 bg-lavender-300 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-medium">
                       {cartCount}
                     </span>
                   )}
@@ -309,7 +314,7 @@ const Header = () => {
                 <button
                   onClick={toggleMobileMenu}
                   data-profile-toggle
-                  className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white/40 hover:border-white/60 transition-colors shadow-md"
+                  className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-pink-200 hover:border-lavender-300 transition-colors"
                   aria-label={
                     mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"
                   }
@@ -334,7 +339,7 @@ const Header = () => {
             {!user && (
               <button
                 onClick={toggleMobileMenu}
-                className="px-3 py-2 border border-white/40 bg-white/20 backdrop-blur-sm rounded-md text-gray-700 shadow-sm"
+                className="px-3 py-2 border border-pink-100 rounded-md text-gray-700"
                 aria-label={
                   mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"
                 }
@@ -358,7 +363,7 @@ const Header = () => {
             {!user ? (
               <Link
                 href="/login"
-                className="px-3 py-2 flex flex-row text-gray-700 bg-white/30 backdrop-blur-md shadow-lg border border-white/40 rounded-md hover:bg-white/40 hover:border-white/50 transition-colors"
+                className="px-3 py-2 flex flex-row text-gray-700 bg-white shadow-sm border border-pink-100 rounded-md hover:bg-pink-50 hover:border-pink-200 transition-colors"
                 data-testid="login"
               >
                 <User className="text-blue-400 w-5" />
@@ -374,7 +379,7 @@ const Header = () => {
         {mobileMenuOpen && (
           <div
             id="mobile-menu"
-            className="md:hidden mt-4 border-t border-white/30 pt-4"
+            className="md:hidden mt-4 border-t border-pink-100 pt-4"
             role="dialog"
             aria-modal="true"
             aria-label="Menu principal"
@@ -384,7 +389,7 @@ const Header = () => {
                 <Link
                   href="/me"
                   onClick={closeMobileMenu}
-                  className="block px-2 py-2 text-sm text-gray-700 hover:bg-white/30 backdrop-blur-sm rounded-md"
+                  className="block px-2 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md"
                 >
                   Mon profil
                 </Link>
@@ -392,7 +397,7 @@ const Header = () => {
                 <Link
                   href="/me/orders"
                   onClick={closeMobileMenu}
-                  className="block px-2 py-2 text-sm text-gray-700 hover:bg-white/30 backdrop-blur-sm rounded-md"
+                  className="block px-2 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md"
                 >
                   Mes commandes
                 </Link>
@@ -400,7 +405,7 @@ const Header = () => {
                 <Link
                   href="/me/contact"
                   onClick={closeMobileMenu}
-                  className="block px-2 py-2 text-sm text-gray-700 hover:bg-white/30 backdrop-blur-sm rounded-md"
+                  className="block px-2 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md"
                 >
                   Contactez le vendeur
                 </Link>
@@ -410,7 +415,7 @@ const Header = () => {
                     closeMobileMenu();
                     await handleSignOut();
                   }}
-                  className="block cursor-pointer w-full text-left px-2 py-2 text-sm text-pink-600 hover:bg-white/30 backdrop-blur-sm rounded-md"
+                  className="block cursor-pointer w-full text-left px-2 py-2 text-sm text-pink-600 hover:bg-pink-50 rounded-md"
                 >
                   Déconnexion
                 </button>
@@ -419,7 +424,7 @@ const Header = () => {
               <Link
                 href="/login"
                 onClick={closeMobileMenu}
-                className="block w-full text-center px-4 py-2 bg-gradient-btn-primary text-gray-800 font-medium rounded-md hover:bg-gradient-btn-primary-hover transition-all shadow-md hover:shadow-lg backdrop-blur-sm"
+                className="block w-full text-center px-4 py-2 bg-gradient-btn-primary text-gray-800 font-medium rounded-md hover:bg-gradient-btn-primary-hover transition-all shadow-sm hover:shadow-md"
               >
                 Connexion
               </Link>
