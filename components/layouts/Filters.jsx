@@ -9,7 +9,7 @@ import dynamic from "next/dynamic";
 
 const Search = dynamic(() => import("./Search"), {
   loading: () => (
-    <div className="h-10 w-full bg-pink-50 animate-pulse rounded-md"></div> // ✅ Rose pastel
+    <div className="h-10 w-full bg-white/20 backdrop-blur-sm animate-pulse rounded-md border border-white/30"></div>
   ),
   ssr: true,
 });
@@ -154,7 +154,7 @@ const Filters = ({ categories, setLocalLoading }) => {
           </h2>
 
           <button
-            className="md:hidden w-full mb-4 py-2 px-4 bg-white border border-pink-200 rounded-md shadow-sm flex justify-between items-center" // ✅ Bordure rose douce
+            className="md:hidden w-full mb-4 py-2 px-4 bg-white/30 backdrop-blur-md border border-white/40 rounded-md shadow-lg flex justify-between items-center hover:bg-white/40 transition-colors"
             onClick={() => setOpen((prev) => !prev)}
             aria-expanded={open}
             aria-controls="filter-panel"
@@ -170,7 +170,7 @@ const Filters = ({ categories, setLocalLoading }) => {
           {hasActiveFilters && (
             <button
               onClick={resetFilters}
-              className="text-sm text-blue-400 cursor-pointer hover:text-blue-500 hidden md:block" // ✅ Bleu doux
+              className="text-sm text-blue-400 cursor-pointer hover:text-blue-500 hidden md:block"
               aria-label="Réinitialiser tous les filtres"
             >
               Réinitialiser
@@ -187,9 +187,7 @@ const Filters = ({ categories, setLocalLoading }) => {
           </div>
 
           {/* Prix */}
-          <div className="p-4 border border-pink-100 bg-white rounded-lg shadow-sm">
-            {" "}
-            {/* ✅ Bordure rose très douce */}
+          <div className="p-4 border border-white/40 bg-white/30 backdrop-blur-md rounded-lg shadow-lg">
             <h3 className="font-semibold mb-3 text-gray-700">Prix (Fdj)</h3>
             <div className="grid grid-cols-2 gap-x-2 mb-3">
               <div>
@@ -202,7 +200,7 @@ const Filters = ({ categories, setLocalLoading }) => {
                 <input
                   id="min-price"
                   name="min"
-                  className="appearance-none border border-pink-100 bg-white rounded-md py-2 px-3 hover:border-pink-200 focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-100 w-full" // ✅ Background blanc
+                  className="appearance-none border border-white/40 bg-white/30 backdrop-blur-sm rounded-md py-2 px-3 hover:border-white/50 focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-100 w-full"
                   type="number"
                   min="0"
                   placeholder="Min"
@@ -223,7 +221,7 @@ const Filters = ({ categories, setLocalLoading }) => {
                 <input
                   id="max-price"
                   name="max"
-                  className="appearance-none border border-pink-100 bg-white rounded-md py-2 px-3 hover:border-pink-200 focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-100 w-full"
+                  className="appearance-none border border-white/40 bg-white/30 backdrop-blur-sm rounded-md py-2 px-3 hover:border-white/50 focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-100 w-full"
                   type="number"
                   min="0"
                   placeholder="Max"
@@ -249,7 +247,7 @@ const Filters = ({ categories, setLocalLoading }) => {
           </div>
 
           {/* Catégories */}
-          <div className="p-4 border border-pink-100 bg-white rounded-lg shadow-sm">
+          <div className="p-4 border border-white/40 bg-white/30 backdrop-blur-md rounded-lg shadow-lg">
             <h3 className="font-semibold mb-3 text-gray-700">Catégories</h3>
 
             {isArrayEmpty(categories) ? (
@@ -263,8 +261,8 @@ const Filters = ({ categories, setLocalLoading }) => {
                     key={category?._id}
                     className={`flex items-center w-full p-2 rounded-md transition-colors cursor-pointer ${
                       currentCategory === category?._id
-                        ? "bg-blue-100 text-blue-700 font-medium" // ✅ Sélection bleu clair
-                        : "hover:bg-pink-50 text-gray-700" // ✅ Hover rose très doux
+                        ? "bg-blue-100 text-blue-700 font-medium"
+                        : "hover:bg-white/20 backdrop-blur-sm text-gray-700"
                     }`}
                     onClick={() => handleCategoryClick(category?._id)}
                     aria-pressed={currentCategory === category?._id}
@@ -282,7 +280,7 @@ const Filters = ({ categories, setLocalLoading }) => {
             <div className="md:hidden">
               <button
                 onClick={resetFilters}
-                className="w-full py-2 text-center text-sm text-pink-600 hover:text-pink-700 border border-pink-200 cursor-pointer rounded-md hover:bg-pink-50"
+                className="w-full py-2 text-center text-sm text-pink-600 hover:text-pink-700 border border-white/40 bg-white/30 backdrop-blur-sm cursor-pointer rounded-md hover:bg-white/40"
                 aria-label="Réinitialiser tous les filtres"
                 disabled={isSubmitting}
               >

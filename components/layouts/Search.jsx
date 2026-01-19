@@ -102,7 +102,7 @@ const Search = ({ setLoading }) => {
     >
       <input
         ref={inputRef}
-        className="grow appearance-none border border-pink-100 bg-white rounded-md mr-2 py-2 px-3 hover:border-pink-200 focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-100" // ✅ Blanc avec bordure rose
+        className="grow appearance-none border border-white/40 bg-white/30 backdrop-blur-sm rounded-md mr-2 py-2 px-3 hover:border-white/50 focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-100"
         type="search"
         placeholder="Rechercher un produit..."
         value={keyword}
