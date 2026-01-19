@@ -53,18 +53,14 @@ const ProductItem = memo(({ product }) => {
   );
 
   return (
-    <article className="border border-pink-100 overflow-hidden bg-white shadow-sm rounded-lg mb-5 hover:shadow-md transition-shadow">
-      {" "}
-      {/* ✅ Bordure rose + shadow au hover */}
+    <article className="border border-white/40 overflow-hidden bg-white/30 backdrop-blur-md shadow-lg rounded-lg mb-5 hover:shadow-xl transition-shadow">
       <Link
         href={`/product/${productId}`}
-        className="flex flex-col md:flex-row hover:bg-pink-50 transition-colors" // ✅ Hover rose très doux
+        className="flex flex-col md:flex-row hover:bg-white/40 transition-colors"
         aria-label={`Voir les détails du produit: ${productName}`}
       >
         <div className="md:w-1/4 flex p-3">
-          <div className="relative w-full aspect-square bg-pink-50 rounded-md overflow-hidden">
-            {" "}
-            {/* ✅ Background rose doux pour l'image */}
+          <div className="relative w-full aspect-square bg-white/20 backdrop-blur-sm rounded-md overflow-hidden">
             <Image
               src={imageUrl}
               alt={productName}
@@ -95,8 +91,7 @@ const ProductItem = memo(({ product }) => {
                 <span className="font-semibold mr-3 text-gray-600">
                   Catégorie:
                 </span>
-                <span className="text-lavender-600">{productCategory}</span>{" "}
-                {/* ✅ Catégorie en lavande */}
+                <span className="text-lavender-600">{productCategory}</span>
               </p>
               <p className="mb-1" title="Description">
                 <span className="font-semibold mr-3 text-gray-600">
@@ -127,8 +122,6 @@ const ProductItem = memo(({ product }) => {
                   </span>
                 ) : (
                   <span className="text-pink-600 font-medium flex items-center">
-                    {" "}
-                    {/* ✅ Rose pour rupture */}
                     <svg
                       className="w-4 h-4 mr-1"
                       fill="currentColor"
@@ -147,13 +140,11 @@ const ProductItem = memo(({ product }) => {
             </div>
           </div>
         </div>
-        <div className="md:w-1/4 border-t lg:border-t-0 lg:border-l border-pink-100 bg-gradient-card-action">
-          {" "}
-          {/* ✅ Bordure rose + dégradé subtil */}
+        <div className="md:w-1/4 border-t lg:border-t-0 lg:border-l border-white/40 bg-gradient-card-action">
           <div className="p-5 flex flex-col justify-between h-full">
             <div>
               <span
-                className="text-2xl font-bold text-blue-400 flex items-center justify-center md:justify-start mb-2" // ✅ Prix en bleu pastel
+                className="text-2xl font-bold text-blue-400 flex items-center justify-center md:justify-start mb-2"
                 data-testid="Price"
               >
                 {new Intl.NumberFormat("fr-FR", {

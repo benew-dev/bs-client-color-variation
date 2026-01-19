@@ -91,7 +91,7 @@ const ListProducts = ({ data, categories }) => {
   if (!hasValidData) {
     return (
       <div
-        className="p-4 bg-pink-50 border border-pink-200 rounded-md my-4" // ✅ Rose doux
+        className="p-4 bg-white/30 backdrop-blur-md border border-white/40 rounded-md my-4 shadow-lg"
         role="alert"
       >
         <p className="font-medium text-pink-700">
@@ -112,9 +112,7 @@ const ListProducts = ({ data, categories }) => {
             />
           ) : (
             <div className="md:w-1/3 lg:w-1/4 px-4">
-              <div className="p-4 bg-pink-50 rounded-md border border-pink-100">
-                {" "}
-                {/* ✅ Rose doux */}
+              <div className="p-4 bg-white/30 backdrop-blur-md rounded-md border border-white/40 shadow-lg">
                 <p className="text-gray-600">Chargement des filtres...</p>
               </div>
             </div>
@@ -127,7 +125,7 @@ const ListProducts = ({ data, categories }) => {
             {/* Récapitulatif des filtres */}
             {filterSummary && (
               <div
-                className="mb-4 p-3 bg-lavender-50 rounded-lg text-sm text-lavender-800 border border-lavender-100" // ✅ Lavande doux
+                className="mb-4 p-3 bg-white/30 backdrop-blur-md rounded-lg text-sm text-lavender-800 border border-white/40 shadow-lg"
                 aria-live="polite"
                 aria-label="Filtres appliqués"
               >
